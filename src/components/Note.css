@@ -1,37 +1,76 @@
 /* frontend/src/components/Note.css */
 
 .note{
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 5px;
-    background-color: #f8f8f8;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .note li {
-    padding: 10px;
-  }
-  
-  h3 {
-    color: #333;
-  }
-  
-  p {
-    color: #555;
-    margin-bottom: 10px;
-  }
-  
-  button {
-    background-color: #e44d26;
-    color: #fff;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #d33a1a;
-  }
-  
+.note li {
+  padding: 10px;
+}
+
+h3 {
+  color: #333;
+}
+
+p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #e44d26;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d33a1a;
+}
+
+code {
+  background-color: #dfdfdf;
+  border-radius: 5px;
+  padding: 2px;
+  font-size: 0.9em;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+}
+
+table thead tr td {
+  font-weight: 500;
+  padding: 12px 15px;
+}
+
+table th, td {
+  padding: 12px 15px;
+}
+
+table tbody tr {
+  border-radius: 10px;
+}
+
+table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}

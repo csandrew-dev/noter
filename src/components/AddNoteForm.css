@@ -1,10 +1,14 @@
-#AddNoteForm {
+.note-container-item {
     border: 1px solid #ccc;
-    padding: 15px;
+    padding: 5px;
     margin: 10px;
     border-radius: 5px;
     background-color: #f8f8f8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+#AddNoteForm {
     display: flex;
     flex-direction: column;
 }
@@ -14,12 +18,30 @@
 }
 
 #AddNoteForm button {
-    max-width: 5%;
-    margin-left: 3%;
+    max-width: 24%;
 }
 
 #note-content {
     width: -moz-available;
     height: 100px;
     padding: 10px;
+}
+
+#new-note-container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+#note-title {
+    width: 50%;
+    padding-left: 10px;
+}
+
+#markdown-preview{
+    padding-left: 10px; 
+}
+
+#preview-notice {
+    margin: 10px;
 }
