@@ -1,0 +1,37 @@
+/* frontend/src/components/Note.css */
+
+.note{
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .note li {
+    padding: 10px;
+  }
+  
+  h3 {
+    color: #333;
+  }
+  
+  p {
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #e44d26;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #d33a1a;
+  }
+  
