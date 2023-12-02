@@ -36,6 +36,8 @@ button:hover {
 }
 
 code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
   background-color: #dfdfdf;
   border-radius: 5px;
   padding: 2px;

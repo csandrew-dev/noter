@@ -1,0 +1,23 @@
+#new-notebook-container {
+    display: flex;
+    align-items: center;
+}
+
+#new-notebook-form {
+  display: flex;
+  align-items: center;
+}
+
+#new-notebook-container img {
+  width: 1.5%;
+  height: auto;
+  margin: 10px;
+} 
+
+#new-notebook-form label {
+  margin: 5px;
+}
+
+#new-notebook-form button {
+  margin: 5px;
+}

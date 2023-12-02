@@ -3,16 +3,17 @@ import './AddNoteForm.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const AddNoteForm = ({ addNote }) => {
+const AddNoteForm = ({ addNote, notebooks}) => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
+  const [selectedNotebook, setSelectedNotebook] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (title.trim() !== '' && text.trim() !== '') {
+    if (title.trim() !== '' && text.trim() !== '' && selectedNotebook.trim() !== '') {
       try {
         // Call the addNote function with the new note data
-        addNote({title, text});
+        addNote({ title, text, notebook: selectedNotebook });
         setTitle('');
         setText('');
       } catch (error) {
@@ -42,6 +43,21 @@ const AddNoteForm = ({ addNote }) => {
             rows="5"
           />
         </label>
+        <label>
+        Notebook:
+        <select
+          value={selectedNotebook}
+          onChange={(e) => setSelectedNotebook(e.target.value)}
+        >
+          {notebooks
+            .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+            .map((notebook) => (
+        <option key={notebook._id} value={notebook._id}>
+          {notebook.name}
+        </option>
+      ))}
+        </select>
+      </label>
         <label id="note-button">
           <button type="submit">Add</button>
         </label>

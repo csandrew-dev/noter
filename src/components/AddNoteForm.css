@@ -44,4 +44,11 @@
 
 #preview-notice {
     margin: 10px;
+    background-color: #f8f8f8;
+    box-shadow: -5px 10px 3px -10px #111;
+    padding-left: 3px;
+}
+
+#preview-content{
+    padding: 10px;
 }
