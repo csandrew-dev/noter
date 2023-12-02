@@ -1,0 +1,21 @@
+img {
+    width: 1.5%;
+    height: auto;
+    margin: 5px;
+  }
+
+button {
+    margin: 5px;
+  }
+
+  .notebook li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .notebook li:hover {
+    background-color: #f5f5f5;
+    color: black;
+  }

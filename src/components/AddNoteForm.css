@@ -15,6 +15,9 @@
 
 #AddNoteForm label {
     padding: 10px;
+    display: flex;
+    align-items: center;
+    color: black;
 }
 
 #AddNoteForm button {
@@ -47,6 +50,7 @@
     background-color: #f8f8f8;
     box-shadow: -5px 10px 3px -10px #111;
     padding-left: 3px;
+    color: black;
 }
 
 #preview-content{

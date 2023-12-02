@@ -6,16 +6,22 @@
 #new-notebook-form {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 #new-notebook-container img {
   width: 1.5%;
   height: auto;
-  margin: 10px;
+  margin-right: 10px;
 } 
+
+#new-notebook-container img:hover {
+  width: 1.7%;
+}
 
 #new-notebook-form label {
   margin: 5px;
+
 }
 
 #new-notebook-form button {

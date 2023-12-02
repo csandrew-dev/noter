@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AddNoteForm.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -7,6 +7,16 @@ const AddNoteForm = ({ addNote, notebooks}) => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [selectedNotebook, setSelectedNotebook] = useState('');
+  const [initialSelectedNotebook, setInitialSelectedNotebook] = useState('');
+
+  useEffect(() => {
+    // Set the initially selected notebook when the component mounts
+    if (notebooks.length > 0) {
+      setInitialSelectedNotebook(notebooks[0]._id);
+      setSelectedNotebook(notebooks[0]._id);
+    }
+  }, [notebooks]);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +26,7 @@ const AddNoteForm = ({ addNote, notebooks}) => {
         addNote({ title, text, notebook: selectedNotebook });
         setTitle('');
         setText('');
+        setSelectedNotebook(initialSelectedNotebook);
       } catch (error) {
         console.error('Error adding note:', error);
       }
@@ -25,7 +36,12 @@ const AddNoteForm = ({ addNote, notebooks}) => {
   return (
     <div id="new-note-container">
       <form className="note-container-item" id="AddNoteForm" onSubmit={handleSubmit}>
+        
         <label id="title-container">
+        <img
+            src="/note-add-unclicked.png"
+            alt="Create Note"
+        />
           <input
             id='note-title'
             value={title}

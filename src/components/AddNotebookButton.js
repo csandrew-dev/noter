@@ -25,7 +25,7 @@ const AddNotebookButton = ({ addNotebook }) => {
     <div id="new-notebook-container">
       {!isFormVisible ? (
         <img
-        src="/notebook.png"
+        src="/notebook-add-clicked.png"
         alt="Create Notebook"
         onClick={() => setFormVisible(true)}
         style={{ cursor: 'pointer'}}
@@ -35,7 +35,7 @@ const AddNotebookButton = ({ addNotebook }) => {
          onSubmit={handleSubmit}
          >
           <img
-                src="/notebook.png"
+                src="/notebook-add-clicked.png"
                 alt="Create Notebook"
                 onClick={() => setFormVisible(false)}
                 style={{ cursor: 'pointer'}}

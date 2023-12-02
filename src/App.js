@@ -4,10 +4,16 @@ import './App.css';
 import AddNoteForm from './components/AddNoteForm';
 import axios from 'axios';
 import AddNotebookButton from './components/AddNotebookButton';
+import NotebookList from './components/NotebookList';
 
 function App() {
   const [notes, setNotes] = useState([]);
   const [notebooks, setNotebooks] = useState([]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
 
   useEffect(() => {
     // Fetch notes from the server
@@ -32,6 +38,18 @@ function App() {
       fetchNotebooks();
     } catch (error) {
       console.error('Error adding notebook:', error);
+    }
+  };
+
+  const deleteNotebook = async (id) => {
+    try {
+      // Make API request to delete a note
+      await axios.delete(`http://localhost:5000/api/notebooks/${id}`);
+      // Fetch notes again to update the list
+      fetchNotebooks();
+      fetchNotes();
+    } catch (error) {
+      console.error('Error deleting notebook:', error);
     }
   };
 
@@ -68,9 +86,11 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={`app-${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
       <h1 id="app-name">Noter</h1>
       <AddNotebookButton addNotebook={addNotebook}/>
+      <NotebookList notebooks={notebooks} deleteNotebook={deleteNotebook} />
       <AddNoteForm addNote={addNote} notebooks={notebooks}/>
       <NoteList notes={notes} deleteNote={deleteNote} />
     </div>

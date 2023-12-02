@@ -7,3 +7,15 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+.app-light-mode {
+  background-color: #fff; /* Light mode background color */
+  color: #333; /* Light mode text color */
+  accent-color: #007bff; /* Light mode accent color */
+}
+
+.app-dark-mode {
+  background-color: #333; /* Dark mode background color */
+  color: #fff; /* Dark mode text color */
+  accent-color: #66b2ff; /* Dark mode accent color */
+}
