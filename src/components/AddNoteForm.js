@@ -20,7 +20,7 @@ const AddNoteForm = ({ addNote, notebooks}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title.trim() !== '' && text.trim() !== '' && selectedNotebook.trim() !== '') {
+    if (title.trim() !== '' && text.trim() !== '') {
       try {
         // Call the addNote function with the new note data
         addNote({ title, text, notebook: selectedNotebook });
@@ -65,6 +65,7 @@ const AddNoteForm = ({ addNote, notebooks}) => {
           value={selectedNotebook}
           onChange={(e) => setSelectedNotebook(e.target.value)}
         >
+          <option value="">No Notebook Selected.</option>
           {notebooks
             .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
             .map((notebook) => (
