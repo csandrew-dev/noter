@@ -90,8 +90,10 @@ function App() {
       <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
       <h1 id="app-name">Noter</h1>
       <AddNotebookButton addNotebook={addNotebook}/>
-      <NotebookList notebooks={notebooks} deleteNotebook={deleteNotebook} />
-      <AddNoteForm addNote={addNote} notebooks={notebooks}/>
+      <div id="flex-container">
+        <NotebookList notebooks={notebooks} deleteNotebook={deleteNotebook} />
+        <AddNoteForm addNote={addNote} notebooks={notebooks}/>
+      </div>
       <NoteList notes={notes} deleteNote={deleteNote} />
     </div>
   );

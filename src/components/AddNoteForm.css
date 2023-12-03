@@ -33,7 +33,7 @@
 #new-note-container {
     display: flex;
     flex-direction: row;
-
+    width: -moz-available;
 }
 
 #note-title {

@@ -1,4 +1,45 @@
+#notebook-list {
+  width: 12%;
+}
+
+
+#notebook-list-header {
+  font-size: 1.5rem;
+}
+
 ul {
-    list-style: none;
-    padding: 0;
-  }
+  list-style-type: none;
+  padding: 0;
+}
+
+.notebook {
+  position: relative;
+}
+
+.notebook img {
+  width: 1.5em;
+  height: auto;
+  cursor: pointer;
+}
+
+.notebook .notebook-name {
+  display: none;
+  position: relative;
+  padding: 5px;
+  width: 30%;
+  font-size: 12px;
+}
+
+.notebook:hover .notebook-name {
+  display: block;
+}
+
+.notebook button {
+  display: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.notebook:hover button {
+  display: block;
+}

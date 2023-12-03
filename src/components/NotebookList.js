@@ -2,9 +2,9 @@ import React from 'react';
 import './NotebookList.css'
 import Notebook from './Notebook';
 
-const NoteList = ({ notebooks, deleteNotebook }) => {
+const NotebookList = ({ notebooks, deleteNotebook }) => {
   return (
-    <div>
+    <div id='notebook-list'>
       <h2 id="notebook-list-header">Notebooks</h2>
       <ul>
         {notebooks.map((notebook) => (
@@ -15,4 +15,4 @@ const NoteList = ({ notebooks, deleteNotebook }) => {
   );
 };
 
-export default NoteList;
+export default NotebookList;

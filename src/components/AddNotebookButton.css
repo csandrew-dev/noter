@@ -1,6 +1,7 @@
 #new-notebook-container {
     display: flex;
     align-items: center;
+    height: 4em;
 }
 
 #new-notebook-form {
@@ -10,13 +11,13 @@
 }
 
 #new-notebook-container img {
-  width: 1.5%;
+  width: 1.5em;
   height: auto;
   margin-right: 10px;
 } 
 
 #new-notebook-container img:hover {
-  width: 1.7%;
+  width: 1.7em;
 }
 
 #new-notebook-form label {

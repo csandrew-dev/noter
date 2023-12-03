@@ -19,3 +19,7 @@
   color: #fff; /* Dark mode text color */
   accent-color: #66b2ff; /* Dark mode accent color */
 }
+
+#flex-container {
+  display: flex;
+}
