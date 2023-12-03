@@ -10,6 +10,7 @@ function App() {
   const [notes, setNotes] = useState([]);
   const [notebooks, setNotebooks] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [selectedNotebook, setSelectedNotebook] = useState(null);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
@@ -85,16 +86,20 @@ function App() {
     }
   };
 
+  const handleNotebookClick = (notebookId) => {
+    setSelectedNotebook(notebookId);
+  };
+
   return (
     <div className={`app-${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
       <h1 id="app-name">Noter</h1>
       <AddNotebookButton addNotebook={addNotebook}/>
       <div id="flex-container">
-        <NotebookList notebooks={notebooks} deleteNotebook={deleteNotebook} />
-        <AddNoteForm addNote={addNote} notebooks={notebooks}/>
+        <NotebookList notebooks={notebooks} deleteNotebook={deleteNotebook} onNotebookClick={handleNotebookClick} />
+        <AddNoteForm addNote={addNote} notebooks={notebooks} selectedNotebook={selectedNotebook} setSelectedNotebook={handleNotebookClick}/>
       </div>
-      <NoteList notes={notes} deleteNote={deleteNote} />
+      <NoteList notes={notes} deleteNote={deleteNote} selectedNotebook={selectedNotebook} notebooks={notebooks}/>
     </div>
   );
 }

@@ -3,20 +3,17 @@ import './AddNoteForm.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const AddNoteForm = ({ addNote, notebooks}) => {
+const AddNoteForm = ({ addNote, notebooks, selectedNotebook, setSelectedNotebook }) => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
-  const [selectedNotebook, setSelectedNotebook] = useState('');
   const [initialSelectedNotebook, setInitialSelectedNotebook] = useState('');
 
   useEffect(() => {
     // Set the initially selected notebook when the component mounts
     if (notebooks.length > 0) {
       setInitialSelectedNotebook(notebooks[0]._id);
-      setSelectedNotebook(notebooks[0]._id);
     }
   }, [notebooks]);
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,12 +33,11 @@ const AddNoteForm = ({ addNote, notebooks}) => {
   return (
     <div id="new-note-container">
       <form className="note-container-item" id="AddNoteForm" onSubmit={handleSubmit}>
-        
         <label id="title-container">
-        <img
+          <img
             src="/note-add-unclicked.png"
             alt="Create Note"
-        />
+          />
           <input
             id='note-title'
             value={title}
@@ -60,21 +56,21 @@ const AddNoteForm = ({ addNote, notebooks}) => {
           />
         </label>
         <label>
-        Notebook:
-        <select
-          value={selectedNotebook}
-          onChange={(e) => setSelectedNotebook(e.target.value)}
-        >
-          <option value="">No Notebook Selected.</option>
-          {notebooks
-            .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
-            .map((notebook) => (
-        <option key={notebook._id} value={notebook._id}>
-          {notebook.name}
-        </option>
-      ))}
-        </select>
-      </label>
+          Notebook:
+          <select
+            value={selectedNotebook}
+            onChange={(e) => setSelectedNotebook(e.target.value)}
+          >
+            <option value="">No Notebook Selected.</option>
+            {notebooks
+              .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+              .map((notebook) => (
+                <option key={notebook._id} value={notebook._id}>
+                  {notebook.name}
+                </option>
+              ))}
+          </select>
+        </label>
         <label id="note-button">
           <button type="submit">Add</button>
         </label>
@@ -83,12 +79,11 @@ const AddNoteForm = ({ addNote, notebooks}) => {
       <div className="note-container-item" id="note-preview">
         <h2 id="preview-notice">Note preview:</h2>
         <div id="preview-content">
-          <ReactMarkdown remarkPlugins={[remarkGfm]} >{title}</ReactMarkdown>
-          <ReactMarkdown remarkPlugins={[remarkGfm]} >{text}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{title}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
         </div>
       </div>
     </div>
-    
   );
 };
 
