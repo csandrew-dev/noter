@@ -54,6 +54,17 @@ function App() {
     }
   };
 
+  const updateNotebookName = async (id, newName) => {
+    try {
+      // Make API request to update a notebook
+      await axios.patch(`http://localhost:5000/api/notebooks/${id}`,{ name: newName });
+      // Fetch notebooks again to update the list
+      fetchNotebooks();
+    } catch (error) {
+      console.error('Error updating notebook name:', error);
+    }
+  }
+
   const fetchNotes = async () => {
     try {
       // Make API request to get all notes
@@ -96,7 +107,7 @@ function App() {
       <h1 id="app-name">Noter</h1>
       <AddNotebookButton addNotebook={addNotebook}/>
       <div id="flex-container">
-        <NotebookList notebooks={notebooks} deleteNotebook={deleteNotebook} onNotebookClick={handleNotebookClick} />
+        <NotebookList notebooks={notebooks} deleteNotebook={deleteNotebook} onNotebookClick={handleNotebookClick} updateNotebookName={updateNotebookName}/>
         <AddNoteForm addNote={addNote} notebooks={notebooks} selectedNotebook={selectedNotebook} setSelectedNotebook={handleNotebookClick}/>
       </div>
       <NoteList notes={notes} deleteNote={deleteNote} selectedNotebook={selectedNotebook} notebooks={notebooks}/>
