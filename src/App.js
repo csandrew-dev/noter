@@ -5,6 +5,7 @@ import AddNoteForm from './components/AddNoteForm';
 import axios from 'axios';
 import AddNotebookButton from './components/AddNotebookButton';
 import NotebookList from './components/NotebookList';
+import EditNoteForm from './components/EditNoteForm';
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -97,6 +98,30 @@ function App() {
     }
   };
 
+  const editNote = async (id, noteData) => {
+    try {
+      // Make API request to edit a note
+      await axios.patch(`http://localhost:5000/api/notes/${id}`, noteData);
+      // Fetch notes again to update the list
+      fetchNotes();
+    } catch (error) {
+      console.error('Error editing note:', error);
+    }
+  }
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editNoteId, setEditNoteId] = useState(null);
+
+  const startEditing = (noteId) => {
+    setIsEditing(true);
+    setEditNoteId(noteId);
+  };
+
+  const stopEditing = () => {
+    setIsEditing(false);
+    setEditNoteId(null);
+  };
+
   const handleNotebookClick = (notebookId) => {
     setSelectedNotebook(notebookId);
   };
@@ -108,9 +133,13 @@ function App() {
       <AddNotebookButton addNotebook={addNotebook}/>
       <div id="flex-container">
         <NotebookList notebooks={notebooks} deleteNotebook={deleteNotebook} onNotebookClick={handleNotebookClick} updateNotebookName={updateNotebookName}/>
-        <AddNoteForm addNote={addNote} notebooks={notebooks} selectedNotebook={selectedNotebook} setSelectedNotebook={handleNotebookClick}/>
+        {isEditing ? (
+          <EditNoteForm note={notes.find(note => note._id === editNoteId)} editNote={editNote} stopEditing={stopEditing} notebooks={notebooks} selectedNotebook={selectedNotebook} setSelectedNotebook={handleNotebookClick} />
+        ) : (
+          <AddNoteForm addNote={addNote} notebooks={notebooks} selectedNotebook={selectedNotebook} setSelectedNotebook={handleNotebookClick}/>
+        )}
       </div>
-      <NoteList notes={notes} deleteNote={deleteNote} selectedNotebook={selectedNotebook} notebooks={notebooks}/>
+      <NoteList notes={notes} deleteNote={deleteNote} selectedNotebook={selectedNotebook} notebooks={notebooks} startEditing={startEditing}/>
     </div>
   );
 }

@@ -11,9 +11,9 @@ const AddNoteForm = ({ addNote, notebooks, selectedNotebook, setSelectedNotebook
   useEffect(() => {
     // Set the initially selected notebook when the component mounts
     if (notebooks.length > 0) {
-      setInitialSelectedNotebook(notebooks[0]._id);
+      setInitialSelectedNotebook(selectedNotebook);
     }
-  }, [notebooks]);
+  }, [notebooks, selectedNotebook]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +29,10 @@ const AddNoteForm = ({ addNote, notebooks, selectedNotebook, setSelectedNotebook
       }
     }
   };
+
+  const handleNotebookChange = (e) => {
+    setSelectedNotebook(e.target.value);
+  }
 
   return (
     <div id="new-note-container">
@@ -59,7 +63,7 @@ const AddNoteForm = ({ addNote, notebooks, selectedNotebook, setSelectedNotebook
           Notebook:
           <select
             value={selectedNotebook}
-            onChange={(e) => setSelectedNotebook(e.target.value)}
+            onChange={handleNotebookChange}
           >
             <option value="">No Notebook Selected.</option>
             {notebooks

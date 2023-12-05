@@ -2,7 +2,7 @@ import React from 'react';
 import Note from './Note';
 import './NoteList.css'
 
-const NoteList = ({ notes, deleteNote, selectedNotebook, notebooks }) => {
+const NoteList = ({ notes, deleteNote, selectedNotebook, notebooks, startEditing }) => {
 
   const filteredNotes = selectedNotebook ? notes.filter(note => note.notebook === selectedNotebook) : notes;
 
@@ -17,7 +17,7 @@ const NoteList = ({ notes, deleteNote, selectedNotebook, notebooks }) => {
       <h2 id="note-list-header">Notes from {selectedNotebookName}</h2>
       <ul>
         {filteredNotes.map((note) => (
-          <Note key={note._id} note={note} deleteNote={deleteNote} />
+          <Note key={note._id} note={note} deleteNote={deleteNote} startEditing={startEditing} />
         ))}
       </ul>
     </div>
