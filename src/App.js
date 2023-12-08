@@ -10,12 +10,7 @@ import EditNoteForm from './components/EditNoteForm';
 function App() {
   const [notes, setNotes] = useState([]);
   const [notebooks, setNotebooks] = useState([]);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedNotebook, setSelectedNotebook] = useState(null);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-  };
 
   useEffect(() => {
     // Fetch notes from the server
@@ -127,8 +122,7 @@ function App() {
   };
 
   return (
-    <div className={`app-${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-      <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
+    <div>
       <h1 id="app-name">Noter</h1>
       <AddNotebookButton addNotebook={addNotebook}/>
       <div id="flex-container">
