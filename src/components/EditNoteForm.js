@@ -1,28 +1,23 @@
 // src/components/EditNoteForm.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './EditNoteForm.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const EditNoteForm = ({ note, editNote, stopEditing, notebooks, selectedNotebook, setSelectedNotebook }) => {
+const EditNoteForm = ({ note, editNote, stopEditing, notebooks }) => {
   const [editedTitle, setEditedTitle] = useState(note.title);
   const [editedText, setEditedText] = useState(note.text);
-  const [editingNotebook, setEditingNotebook] = useState(note.notebook || '');
+  const [editedNotebook, setEditedSelectedNotebook] = useState(note.notebook);
 
 
-  useEffect(() => {
-    // Set the initially selected notebook when the component mounts or when note changes
-    if (notebooks.length > 0 && !editingNotebook) {
-      setEditingNotebook(note.notebook || ''); // Use the note's notebook or an empty string if not available
-    }
-  }, [notebooks, note, editingNotebook]);
-  
 
   const handleSave = () => {
     // Save the edited note if either title or text is not empty
     if (editedTitle.trim() !== '' || editedText.trim() !== '') {
-      editNote(note._id, { title: editedTitle, text: editedText, notebook: editingNotebook });
+      editNote(note._id, { title: editedTitle, text: editedText, notebook: editedNotebook });
       stopEditing();
+      setEditedTitle('');
+      setEditedText('');
     }
   };
 
@@ -33,10 +28,9 @@ const EditNoteForm = ({ note, editNote, stopEditing, notebooks, selectedNotebook
   };
   
   const handleNotebookChange = (e) => {
-    setEditingNotebook(e.target.value);
-    console.log(e.target.value);
-    console.log(editingNotebook);
-  };
+    const selectedValue = e.target.value;
+    setEditedSelectedNotebook(selectedValue === '' ? null : selectedValue);
+  }
   
 
   return (
@@ -65,7 +59,7 @@ const EditNoteForm = ({ note, editNote, stopEditing, notebooks, selectedNotebook
         <label>
           Notebook:
           <select
-            value={editingNotebook}
+            value={editedNotebook}
             onChange={handleNotebookChange}
           >
             <option value="">No Notebook Selected.</option>

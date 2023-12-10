@@ -31,7 +31,9 @@ const AddNoteForm = ({ addNote, notebooks, selectedNotebook, setSelectedNotebook
   };
 
   const handleNotebookChange = (e) => {
-    setSelectedNotebook(e.target.value);
+    const selectedValue = e.target.value;
+    setSelectedNotebook(selectedValue === '' ? null : selectedValue);
+    console.log(selectedValue);
   }
 
   return (
